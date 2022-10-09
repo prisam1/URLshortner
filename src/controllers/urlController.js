@@ -30,12 +30,6 @@ redisClient.on("connect", async function () {
 });
 
 
-
-//1. connect to the server
-//2. use the commands :
-
-//Connection setup for redis
-
 const SET_ASYNC = promisify(redisClient.SET).bind(redisClient);
 const GET_ASYNC = promisify(redisClient.GET).bind(redisClient);
 
@@ -65,7 +59,7 @@ const createUrl = async function (req, res) {
             return res.status(400).send({ status: false, message: "invalid url" })
         }
 
-        let longurl1 = await GET_ASYNC(`${longUrl}`)
+        let longurl1 = await GET_ASYNC(longUrl)
         
 
         if (longurl1) {
@@ -74,13 +68,13 @@ const createUrl = async function (req, res) {
             return res.status(200).send({ status: true, message: "url already present", data: data })
         }
 
-        let findUrl = await urlmodel.findOne({ longUrl: longUrl }).select({ longUrl: 1, shortUrl: 1, urlCode: 1, _id: 0 });
+        let findUrl = await urlmodel.findOne({ longUrl: longUrl }).select({ longUrl: 1, shortUrl: 1, urlCode: 1});
         if (findUrl) {
             return res.status(200).send({ status: true, message: "url already present", data: findUrl })
         }
 
 
-        const urlcode = shortid.generate()
+        const urlcode = shortid.generate().toLowerCase()
         const shorturl = `http://${req.get("host")}/${urlcode}`
         const savedata = {
             "longUrl": longUrl,
@@ -92,7 +86,7 @@ const createUrl = async function (req, res) {
         const url = {...createData.toObject()}
         delete url._id
         delete url.__v
-        await SET_ASYNC(`${longUrl}`, JSON.stringify(url))
+        await SET_ASYNC(longUrl, JSON.stringify(url))
         return res.status(201).send({ status: true, data: url })
     } catch (error) {
         return res.status(500).send({ status: false, error: error.message })
@@ -102,7 +96,7 @@ const createUrl = async function (req, res) {
 const getUrl = async function (req, res) {
     try {
         let urlcode1 = req.params.urlCode
-        let urlcode = await GET_ASYNC(`${urlcode1}`)
+        let urlcode = await GET_ASYNC(urlcode1)
 
         if (urlcode) {
             let data = JSON.parse(urlcode)
@@ -110,7 +104,7 @@ const getUrl = async function (req, res) {
         } else {
             const findurlLink = await urlmodel.findOne({ urlCode: urlcode1 })
             if (!findurlLink) return res.status(404).send({ status: false, message: "Url Not Found" })
-            await SET_ASYNC(`${urlcode1}`, JSON.stringify(findurlLink))
+            await SET_ASYNC(urlcode1, JSON.stringify(findurlLink))
             return res.status(302).redirect(findurlLink.longUrl)
         }
     } catch (error) {

@@ -34,7 +34,7 @@ const urlShorter = async function (req, res) {
              
      
         let urlCode = (shortid.generate()).toLowerCase();
-        let baseUrl = "https://localhost:5001/"
+        let baseUrl = "https://tiny.url/"
         let shortUrl = baseUrl + urlCode;
 
         let savedData = await urlModel.create({ urlCode: urlCode, longUrl: longUrl, shortUrl: shortUrl })

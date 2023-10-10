@@ -6,6 +6,7 @@ const App = () => {
   const [shortUrl, setShortUrl] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
+  const [urlCode, setUrlCode]= useState('')
 
 
   const baseURL= 'https://url-cyvu.onrender.com'
@@ -34,6 +35,7 @@ const App = () => {
 
         setMessage(data.message)
         setShortUrl(data.data.shortUrl)
+        setUrlCode(data.data.urlCode)
         
       }
     } catch (error) {

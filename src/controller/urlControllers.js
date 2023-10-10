@@ -34,7 +34,7 @@ const urlShorter = async function (req, res) {
              
      
         let urlCode = (shortid.generate()).toLowerCase();
-        let baseUrl = "http://localhost:5000/"
+        let baseUrl = "https://url-cyvu.onrender.com/"
         let shortUrl = baseUrl + urlCode;
 
         let savedData = await urlModel.create({ urlCode: urlCode, longUrl: longUrl, shortUrl: shortUrl })

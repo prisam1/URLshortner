@@ -14,7 +14,7 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch(`${backendBaseUrl}/url/shorten`, {
+      const response = await fetch(`${baseURL}/url/shorten`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const App = () => {
 
   const handleRedirect = async () => {
     try {
-      const response = await fetch(`${backendBaseUrl}/get`, {
+      const response = await fetch(`${baseURL}/get`, {
         method: 'GET',
       })
 

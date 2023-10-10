@@ -1,7 +1,6 @@
 
 # Deployed link-"https://reliable-eclair-8f791a.netlify.app"
 
-## Scalable URL Shortner Project Requirement
 
 
 ## Overview

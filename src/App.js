@@ -37,8 +37,8 @@ const App = () => {
         
         
       }
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -56,11 +56,7 @@ const App = () => {
         <button type="submit">Shorten</button>
       </form>
 
-      {error && (
-        <div className="error-message">
-          <p>Error: {error}</p>
-        </div>
-      )}
+      
    
     {!shortUrl && (
         <div className="error-message">

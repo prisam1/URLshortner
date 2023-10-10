@@ -16,7 +16,7 @@ const urlShorter = async function (req, res) {
         if (typeof longUrl !== "string") {
             return res.status(400).send({ status: false, message: "longUrl Must be in String" })
         }
-        let urlRegex = "((http|https)://)(www.)?"+ "[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]"+ "{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)"
+        let urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
 
 
 

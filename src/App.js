@@ -38,7 +38,7 @@ const App = () => {
         
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.log(error)
     }
   }
 

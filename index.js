@@ -2,9 +2,14 @@ const express=require("express")
 const mongoose=require("mongoose")
 const bodyParser=require("body-parser")
 const route=require('./src/route/route')
+const cors = require('cors');
+const app = express();
+
+app.use(cors({
+  origin: 'https://frontend--reliable-eclair-8f791a.netlify.app/',
+}))
 
 
-const app = express()
 app.use(bodyParser.json())
 
 mongoose.connect("mongodb+srv://pritamsam1:Pritamsam1@project.383arvg.mongodb.net/url",{useNewUrlParser:true})

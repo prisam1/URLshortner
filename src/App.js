@@ -30,7 +30,7 @@ const App = () => {
 
         setMessage(data.message)
         setShortUrl(data.data.shortUrl)
-        setUrlCode(data.data.urlCode)
+        
       }
     } catch (error) {
       console.error('Error:', error)

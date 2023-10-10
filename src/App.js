@@ -43,7 +43,7 @@ const App = () => {
 
   const handleRedirect = async () => {
     try {
-      const response = await fetch(`${baseURL}/get`, {
+      const response = await fetch(`${baseURL}/get/${urlCode}`, {
         method: 'GET',
       })
 

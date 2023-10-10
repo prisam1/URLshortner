@@ -7,10 +7,14 @@ const App = () => {
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
+
+  const baseURL: 'https://url-cyvu.onrender.com',
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch("/url/shorten", {
+      const response = await fetch(`${backendBaseUrl}/url/shorten`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +43,7 @@ const App = () => {
 
   const handleRedirect = async () => {
     try {
-      const response = await fetch("/get", {
+      const response = await fetch(`${backendBaseUrl}/get`, {
         method: 'GET',
       })
 

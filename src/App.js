@@ -50,7 +50,7 @@ const App = () => {
       const data = await response.json()
 
       if (response.ok) {
-        window.location.href = data.data.shortUrl
+        window.location.href = data.data.longUrl
       } else {
         const errorData = await response.json()
         setMessage(errorData.message)
@@ -92,7 +92,7 @@ const App = () => {
       {shortUrl && (
         <div>
           <h3>{message}</h3>
-          <p>Shortened URL: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a></p>
+          <p>Shortened URL: <a href={longUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a></p>
           <button onClick={handleRedirect}>Go to Short URL</button>
         </div>
       )}

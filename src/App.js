@@ -8,7 +8,7 @@ const App = () => {
   const [error, setError] = useState('')
 
 
-  const baseURL: 'https://url-cyvu.onrender.com',
+  const baseURL: 'https://url-cyvu.onrender.com'
   
   
   const handleSubmit = async (e) => {

@@ -5,7 +5,7 @@ const App = () => {
   const [longUrl, setLongUrl] = useState('')
   const [shortUrl, setShortUrl] = useState('')
   const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
+
 
 
   const baseURL= 'https://url-cyvu.onrender.com'

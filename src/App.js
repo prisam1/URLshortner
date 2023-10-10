@@ -6,7 +6,6 @@ const App = () => {
   const [shortUrl, setShortUrl] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const [urlCode, setUrlCode] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()

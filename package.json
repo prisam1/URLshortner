@@ -1,6 +1,6 @@
 {
   "name": "urlshortner",
-  "proxy":"http://localhost:5000/",
+  "proxy":"https://url-cyvu.onrender.com",
   "version": "0.1.0",
    "private": true,
   "dependencies": {

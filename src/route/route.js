@@ -4,7 +4,7 @@ const {urlShorter, geturl} = require("../controller/urlControllers")
 
 
 router.post("/url/shorten", urlShorter)
-router.get("/get", geturl)
+router.get("/get/:urlCode", geturl)
 
 router.all("/*", (req,res)=> {
     return res.status(400).send({ status: false, Message: "Invalid URL"})

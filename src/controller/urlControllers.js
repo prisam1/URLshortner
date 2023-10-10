@@ -55,16 +55,18 @@ const urlShorter = async function (req, res) {
 const geturl = async function (req, res) {
     try {
 
-        // if (!shortid.isValid(req.query.urlCode.trim()))
-        //  {
-        //     return res.status(400).send({ status: false, message: "Invalid shortid" })
-        // }
+        const urlCode = req.params.urlCode
+
+        if (!shortid.isValid(req.query.urlCode.trim()))
+         {
+            return res.status(400).send({ status: false, message: "Invalid Short URL" })
+        }
               
-        const url = await urlModel.find()
+        const url = await urlModel.findOne({ urlCode: urlCode })
         if (url) {
              return res.status(302).redirect(url.longUrl)
         } else {
-            return res.status(404).send({ status: false, message: "Not found shortid" });
+            return res.status(404).send({ status: false, message: "No URL Found" });
         }
     } catch (err) {
         return res.status(500).send({ status: false, message: err })

@@ -6,7 +6,6 @@ const App = () => {
   const [shortUrl, setShortUrl] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const [urlCode, setUrlCode]= useState('')
 
 
   const baseURL= 'https://url-cyvu.onrender.com'
@@ -43,28 +42,7 @@ const App = () => {
     }
   }
 
-  const handleRedirect = async () => {
-    try {
-      const response = await fetch(`${baseURL}/get/${urlCode}`, {
-        method: 'GET',
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        window.location.href = data.data.longUrl
-      } else {
-        const errorData = await response.json()
-        setMessage(errorData.message)
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      setError('An error occurred while redirecting.')
-    }
-  }
-
-
-  return (
+    return (
     <div>
       <h2>URL Shortener</h2>
       <form onSubmit={handleSubmit}>
@@ -95,7 +73,7 @@ const App = () => {
         <div>
           <h3>{message}</h3>
           <p>Shortened URL: <a href={longUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a></p>
-          <button onClick={handleRedirect}>Go to Short URL</button>
+          
         </div>
       )}
     </div>
